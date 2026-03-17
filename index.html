@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내 첫번째 아이디어</title>
+    <!-- Use a nice Google Font -->
+    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #f0f6ff 0%, #e0eaff 100%);
+            text-align: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 4rem 6rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px -10px rgba(37, 99, 235, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            transform: translateY(0);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px -15px rgba(37, 99, 235, 0.3);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 5.5rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            color: #2563eb; /* Vibrant Modern Blue */
+            text-shadow: 0px 4px 12px rgba(37, 99, 235, 0.15);
+            animation: fadeIn 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>내 첫번째 아이디어</h1>
+    </div>
+</body>
+</html>
