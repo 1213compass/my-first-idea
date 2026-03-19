@@ -7,6 +7,18 @@
     <!-- Use a nice Google Font -->
     <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
     <style>
+        :root {
+            --bg-start: #f8f9fa;
+            --bg-end: #e2e8f0;
+            --text-main: #1e293b;
+            --text-sub: #64748b;
+            --container-bg: rgba(255, 255, 255, 0.7);
+            --container-border: rgba(255, 255, 255, 0.9);
+            --shadow-color: rgba(15, 23, 42, 0.04);
+            --shadow-hover: rgba(15, 23, 42, 0.08);
+            --accent: #94a3b8;
+        }
+
         body, html {
             margin: 0;
             padding: 0;
@@ -15,52 +27,104 @@
             justify-content: center;
             align-items: center;
             font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+            background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
+            color: var(--text-main);
             text-align: center;
         }
 
         .container {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 4rem 6rem;
-            border-radius: 24px;
-            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            background: var(--container-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 5rem 7rem;
+            border-radius: 32px;
+            box-shadow: 
+                0 10px 40px -10px var(--shadow-color),
+                inset 0 0 0 1px var(--container-border);
             transform: translateY(0);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 5px;
+            background: linear-gradient(90deg, #e2e8f0, #cbd5e1);
+            opacity: 0.8;
         }
 
         .container:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.5);
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 
+                0 25px 50px -15px var(--shadow-hover),
+                inset 0 0 0 1px rgba(255,255,255, 1);
+        }
+
+        .greeting-badge {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            color: var(--text-sub);
+            text-transform: uppercase;
+            padding: 0.5rem 1.2rem;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 99px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            animation: fadeInDown 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
         h1 {
             margin: 0;
-            font-size: 40px;
+            font-size: 44px;
             font-weight: 800;
             letter-spacing: -0.04em;
-            color: rgba(255, 255, 255, 0.95); /* Clear White Tone */
-            text-shadow: 0px 4px 12px rgba(255, 255, 255, 0.1);
-            animation: fadeIn 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+            color: var(--text-main);
+            text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.03);
+            animation: fadeInUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.1s both;
+            line-height: 1.2;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px) scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
+        .divider {
+            width: 40px;
+            height: 3px;
+            background: var(--accent);
+            margin: 2rem auto 0;
+            border-radius: 2px;
+            opacity: 0.2;
+            animation: scaleIn 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s both;
+            transition: width 0.4s ease, opacity 0.4s ease;
+        }
+
+        .container:hover .divider {
+            width: 80px;
+            opacity: 0.4;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scaleX(0); }
+            to { opacity: 0.2; transform: scaleX(1); }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="greeting-badge">Daily Message</div>
         <h1>오늘도 힘내세요!</h1>
+        <div class="divider"></div>
     </div>
 </body>
 </html>
